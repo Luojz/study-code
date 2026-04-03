@@ -1,0 +1,35 @@
+# 学习覆盖率
+# 基于已发现节点记录函数理解层级
+
+# 全局统计
+stats:
+  discovered_functions: 0          # 已发现的函数总数
+  level_1_heard: 0               # 讲解过
+  level_2_can_retell: 0             # 提问答对
+  level_3_can_find: 0             # 练习正确
+  level_4_can_do: 0               # 模拟通过
+  lecture_rate: "0%"              # Level 1+ / discovered
+  comprehension_rate: "0%"         # Level 3+ / discovered
+
+# 按节点记录
+nodes:
+  # 示例：
+  # "vue/ui6/ge-ren-zhong-xin/js/ge-ren-zhong-xin-index.js":
+  #   file_path: "vue/ui6/ge-ren-zhong-xin/ge-ren-zhong-xin/js/ge-ren-zhong-xin-index.js"
+  #   total_functions: 89
+  #   discovered_functions: 89        # 展开时自动提取
+  #   functions:
+  #     init:
+  #       level: 1                   # 0=未学, 1=听过, 2=能复述, 3=能找到代码, 4=能独立修改
+  #       last_updated: "2026-04-03T10:00"
+  #     mount:
+  #       level: 0
+  #       last_updated: null
+  #   scan_summary: "初始化相关(3) | 数据请求(8) | 事件处理(12) | 渲染UI(15) | 工具(6)"
+
+# 覆盖率层级说明：
+# level 0 = 已发现函数签名但未讲解
+# level 1 = 听过——老师傅讲过这个函数
+# level 2 = 能复述——能用自己的话说出函数做什么
+# level 3 = 能找到代码——能在练习中定位到函数位置
+# level 4 = 能独立修改——能在模拟中正确分析修改影响范围

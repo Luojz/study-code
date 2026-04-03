@@ -1,0 +1,81 @@
+# DAG 学习路线图
+# 节点在展开过程中渐进发现，路线图是已展开节点的有向无环图 (DAG)
+
+# 节点字段规范:
+#   id: 唯一标识 (如 M0.1, M1.1, T1)
+#   title: 节点标题
+#   type: module(模块学习) | trace(功能追踪)
+#   phase: mental-model | foundation | core | advanced
+#   prerequisites: 前置节点 ID 列表
+#   files: 关联文件路径列表
+#   status: discovered | expanded | learning | done
+#   level_reached: 0-4 (学习覆盖层级)
+#   expanded: true/false (节点内容是否已展开)
+#   discovered_at: ISO datetime
+
+nodes:
+  # 示例种子节点（init 生成）
+  M0.1:
+    id: "M0.1"
+    title: "项目架构概览"
+    type: module
+    phase: mental-model
+    prerequisites: []
+    files: ["CLAUDE.md", "README.md"]
+    status: done
+    level_reached: 2
+    expanded: true
+    discovered_at: "2026-04-03T10:00"
+
+  # 示例：展开时发现的依赖节点
+  M1.1:
+    id: "M1.1"
+    title: "SeaJS 模块加载"
+    type: module
+    phase: foundation
+    prerequisites: [M0.1]
+    files: ["z_modules/sea.js"]
+    status: discovered
+    level_reached: 0
+    expanded: false
+    discovered_at: "2026-04-03T10:15"
+
+  # 示例：另一个依赖节点
+  M1.2:
+    id: "M1.2"
+    title: "Native 桥接层"
+    type: module
+    phase: foundation
+    prerequisites: [M0.1]
+    files: ["z_modules/native/"]
+    status: discovered
+    level_reached: 0
+    expanded: false
+    discovered_at: "2026-04-03T10:15"
+
+  # 示例：模式A 追踪单元
+  T1:
+    id: "T1"
+    title: "交易按钮点击流程"
+    type: trace
+    phase: core
+    triggered_by: "用户想了解交易按钮的完整流程"
+    covered_nodes: [M1.1, M1.2]
+    status: done
+    discovered_at: "2026-04-03T11:30"
+
+# DAG 边（依赖关系）
+edges:
+  - from: "M0.1"
+    to: "M1.1"
+    type: prerequisite
+  - from: "M0.1"
+    to: "M1.2"
+    type: prerequisite
+
+# 元数据
+meta:
+  created_at: null
+  last_updated: null
+  total_nodes: 1
+  total_edges: 0

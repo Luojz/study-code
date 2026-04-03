@@ -1,0 +1,27 @@
+# 学习进度
+
+# 当前光标（精确断点）
+current_cursor:
+  node_id: ""                    # 当前 DAG 节点 ID
+  node_path: ""               # 当前文件/目录路径
+  function_group: ""            # 当前函数组名（如"初始化相关"）
+  function_name: ""            # 当前函数名
+  explain_progress: ""         # 讲解进度描述（如"已讲功能+意图，待讲陷阱"）
+
+# 会话统计
+sessions_completed: 0
+first_session: null              # ISO datetime
+last_session: null               # ISO datetime
+
+# 学习模式
+learning_mode: "structured"          # structured(模式B) | trace(模式A)
+previous_mode: null                 # 模式切换前的模式
+
+# 模式A 追踪状态
+trace_active: false
+trace_target: ""                  # 当前追踪的功能描述
+trace_nodes_visited: []             # 追踪路径中已访问的 DAG 节点
+
+# 学习节奏控制
+consecutive_questions: 0              # 连续提问次数
+# 注意：偏离计数在 drift-log.yaml 中跟踪，不在这里重复

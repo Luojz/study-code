@@ -1,0 +1,4 @@
+src/
+!src/cli.js
+*.test.js
+.DS_Store

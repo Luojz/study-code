@@ -1,0 +1,51 @@
+# 树展开状态
+# 记录每个已展开/已发现节点的状态
+# 注意：level 字段表示展开深度 (0-3)，与 coverage.yaml 的学习理解层级 (0-4) 是独立的两套体系
+
+# 项目根路径（绝对路径）
+project_root: ""
+
+# 节点映射：路径 → 节点信息
+nodes:
+  # 示例节点：
+  # "vue/":
+  #   level: 1                    # 展开到的层级 (0-3)
+  #   expanded_at: "2026-04-03T10:01"
+  #   type: directory             # directory | file | function_group | function
+  #   display_name: "vue/"
+  #   children:                   # 展开时发现的子项
+  #     - path: "vue/components/"
+  #       type: directory
+  #     - path: "vue/common/"
+  #       type: directory
+  #     - path: "vue/ui6/"
+  #       type: directory
+  #   dependencies:               # 展开时发现的依赖
+  #     - target: "z_modules/native/"
+  #       source: "require in index.js"
+  #       discovered: true
+  #       expanded: false
+  #   scan_summary: "3个子目录，无文件"  # L1扫描的一句话摘要
+  #   status: expanded            # unknown | discovered | expanded | learning | done
+
+# 排除规则（不需要展开的路径模式）
+excluded_patterns:
+  - "node_modules/"
+  - ".git/"
+  - "dist/"
+  - "build/"
+  - "img/"
+  - "images/"
+  - "static/img/"
+  - "*.min.js"
+  - "*.min.css"
+  - "vendor/"
+  - "__pycache__/"
+  - ".DS_Store"
+
+# 全局统计
+stats:
+  total_directories: 0
+  total_files: 0
+  expanded_nodes: 0
+  discovered_nodes: 0

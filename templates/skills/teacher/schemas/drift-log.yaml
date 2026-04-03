@@ -1,0 +1,16 @@
+# 偏离日志
+
+entries:
+  # 示例：
+  # - timestamp: "2026-04-03T10:20"
+  #   current_unit: "M1.2 Native桥接"
+  #   drifted_to: "Vue组件通信"
+  #   user_choice: "deep_dive"       # deep_dive | quick_answer | back_to_route
+  #   context: "学 native bridge 时问了关于组件间数据传递的问题"
+  #   resolved: false
+
+# 偏离模式分析
+patterns:
+  frequent_targets: []           # 高频偏离目标
+  possible_missing_prereqs: []    # 可能缺失的前置知识
+  consecutive_drift_count: 0     # 当前连续偏离计数

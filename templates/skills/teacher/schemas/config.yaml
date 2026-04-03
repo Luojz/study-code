@@ -1,0 +1,37 @@
+# 学习配置文件
+# 由 /teach:init 根据摸底评估结果生成
+
+# 学习者档案
+learner_profile:
+  # 技术背景
+  background: ""
+  # 经验等级: junior | mid | senior
+  experience_level: "mid"
+  # 熟悉的技术栈（列表）
+  known_techs: []
+  # 不熟悉的技术栈
+  unknown_techs: []
+
+# 学习目标
+learning_goal:
+  # 模式: maintain(接手维护) | develop(新功能开发) | explore(探索了解)
+  mode: "explore"
+  # 具体目标描述
+  description: ""
+  # 关注的模块（优先学习）
+  focus_areas: []
+
+# 引导强度（由摸底评估自动设定，可手动调整）
+# brief: 老手模式，简化引导，少解释基础
+# standard: 中等经验，标准引导
+# detailed: 新手模式，详细引导，多背景解释
+guidance_level: "standard"
+
+# 提问频率（讲解中穿插提问的频率）
+# low: 每个模块1次
+# medium: 每2-3个知识点1次（默认）
+# high: 每个知识点后都问
+# off: 关闭主动提问
+question_frequency: "medium"
+
+# 注意：会话统计在 progress.yaml 中跟踪，不在这里重复
