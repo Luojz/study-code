@@ -11,7 +11,7 @@
 开始摸底前，先检查 `.study-code/` 是否已存在：
 
 - **已存在** → 用 **AskUserQuestion tool** 询问："已经存在学习记录。要继续用之前的，还是重新初始化？"
-  - 继续用 → 读取状态，展示进度，建议运行 `/teach` 继续
+  - 继续用 → 读取状态，展示进度，建议运行 `/teach:teach` 继续
   - 重新初始化 → 备份旧状态到 `.study-code.backup.[timestamp]/`，然后继续
 
 ## 你什么摸底（四维度询问）
@@ -155,7 +155,7 @@ mkdir -p .study-code/knowledge
 
 建议从 [推荐起点] 开始学。
 
-输入 `/teach` 开始学习，或者直接问我任何关于代码的问题。
+输入 `/teach:teach` 开始学习，或者直接问我任何关于代码的问题。
 ```
 
 ## Guardrails

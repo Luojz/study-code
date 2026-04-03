@@ -24,7 +24,7 @@ List all study-code commands with descriptions and usage guidance.
 - 扫描项目结构，发现入口点
 - 创建状态文件在 `.study-code/` 目录
 
-### /teach
+### /teach:teach
 主学习命令 — 自然对话即可。
 - 读取当前学习状态，智能引导下一步
 - 支持自然语言，自动理解意图：
@@ -40,7 +40,7 @@ List all study-code commands with descriptions and usage guidance.
 | "有哪些没学" | 检查盲区 |
 | "不学了" | 保存进度，下次继续 |
 
-**就这两个命令！** `/teach:init` 初始化，`/teach` 学习。系统理解自然语言。
+**就这两个命令！** `/teach:init` 初始化，`/teach:teach` 学习。系统理解自然语言。
 
 ---
 
@@ -92,6 +92,6 @@ List all study-code commands with descriptions and usage guidance.
 ## 快速开始
 
 1. `/teach:init` 初始化
-2. `/teach` 开始学习
+2. `/teach:teach` 开始学习
 3. 自然对话 — 系统处理一切
 ```

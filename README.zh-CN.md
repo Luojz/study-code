@@ -52,7 +52,7 @@ study-code init
 
 ```
 /teach:init    →  摸底评估 + 自动扫描项目结构
-/teach         →  开始学习，自然对话即可
+/teach:teach   →  开始学习，自然对话即可
 ```
 
 就两个命令。零配置。
@@ -64,7 +64,7 @@ study-code init
 ### 像真人聊天，不像读文档
 
 ```
-你:      /teach
+你:      /teach:teach
 老师傅:  上次你学到 init() 的 native 桥接部分，我正准备讲 fetchUserInfo()。继续？
 你:      这个函数返回的是字符串不是数字吗？
 老师傅:  好问题！这个确实容易踩坑……
@@ -97,7 +97,7 @@ L3  函数签名       ← 你说"这个文件里有什么函数"
 
 ### 跨对话断点恢复
 
-关掉对话，明天再开？精确记录你学到哪个函数的哪一行，下次 `/teach` 直接接上。
+关掉对话，明天再开？精确记录你学到哪个函数的哪一行，下次 `/teach:teach` 直接接上。
 
 ---
 
@@ -132,7 +132,7 @@ L3  函数签名       ← 你说"这个文件里有什么函数"
 
 ```
 .claude/
-├── commands/teach/       ← 斜杠命令（/teach, /teach:init, /teach:help）
+├── commands/teach/       ← 斜杠命令（/teach:teach, /teach:init, /teach:help）
 └── skills/teacher/       ← 教学引擎（编排器、行为模块、状态模式）
 ```
 

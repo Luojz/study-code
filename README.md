@@ -52,7 +52,7 @@ Open Claude Code in your project and type:
 
 ```
 /teach:init    →  Assessment + project structure scan
-/teach         →  Start learning — just talk naturally
+/teach:teach   →  Start learning — just talk naturally
 ```
 
 That's it. Two commands. Zero configuration.
@@ -64,7 +64,7 @@ That's it. Two commands. Zero configuration.
 ### Conversational, Not Mechanical
 
 ```
-You:      /teach
+You:      /teach:teach
 Mentor:   Last time we got to the native bridge in init(), I was about to explain fetchUserInfo(). Continue?
 You:      Does this function return a string instead of a number?
 Mentor:   Great question! This is actually a common gotcha...
@@ -97,7 +97,7 @@ From "knows it exists" to "can independently change the code" — every step is 
 
 ### Resume Across Sessions
 
-Close the conversation, come back tomorrow? Exact resume point saved — down to the specific function and line. Next `/teach` picks right up.
+Close the conversation, come back tomorrow? Exact resume point saved — down to the specific function and line. Next `/teach:teach` picks right up.
 
 ---
 
@@ -132,7 +132,7 @@ Switch modes anytime — just say it in the conversation.
 
 ```
 .claude/
-├── commands/teach/       ← Slash commands (/teach, /teach:init, /teach:help)
+├── commands/teach/       ← Slash commands (/teach:teach, /teach:init, /teach:help)
 └── skills/teacher/       ← Teaching engine (orchestrator, behaviors, schemas)
 ```
 
