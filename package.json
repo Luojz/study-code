@@ -1,6 +1,6 @@
 {
   "name": "study-code",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "AI-powered code teaching system scaffolder - installs teacher skills for Claude Code",
   "bin": {
     "study-code": "./src/cli.js"
