@@ -2,88 +2,102 @@
 
 # study-code
 
-**Turn Claude Code into your personal code mentor**
+**Turn your AI coding tool into a personal code mentor**
 
 [![npm version](https://img.shields.io/npm/v/study-code.svg)](https://www.npmjs.com/package/study-code)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Node](https://img.shields.io/node/v/study-code.svg)](https://nodejs.org)
 
-[中文文档](README.zh-CN.md)
+[中文文档](https://github.com/luojz/study-code/blob/master/docs/README.zh-CN.md)
 
 ---
 
 </div>
 
-## What is it?
+## What is it? Who is it for?
 
-**study-code** installs an AI teaching system into your project's Claude Code environment. It makes Claude behave like a senior colleague who walks you through any codebase — not line-by-line translation, but **why** things work the way they do.
+Facing an unfamiliar codebase — just joined a team, inherited someone's module, or trying to understand an open-source project? study-code installs a "senior colleague teaching a newcomer" system into your project. You ask questions in plain language; the AI walks you through the code. Every function is taught in three dimensions: **what it does, why it's designed that way, and what pitfalls to watch for** — not line-by-line translation.
 
-No config files. No learning curve. Install, init, talk.
+No config files. No concepts to learn. Install, init, talk.
+
+Works with **Claude Code** (auto-detected) and **ZCode** (one-time command import).
 
 ## Quick Start
 
-### Option 1: Install via npm (Recommended)
-
 ```bash
+# 1. Install
 npm install -g study-code
+
+# 2. Install the teaching system into your project
 cd your-project
 study-code init
 ```
 
-### Option 2: Manual Install
+`study-code init` does exactly one thing: it writes the commands and teaching files into your project's `.claude/` directory. Then, depending on your tool:
 
-```bash
-git clone https://github.com/user/study-code.git
-cd study-code
-npm install
-npm link
-```
-
-Then in your project:
-
-```bash
-cd your-project
-study-code init
-```
-
-### Start Learning
+### With Claude Code: just start, no import needed
 
 Open Claude Code in your project and type:
 
 ```
-/teach:init    →  Assessment + project structure scan
-/teach:teach   →  Start learning — just talk naturally
+/teach:init    → Assessment + project structure scan (once per project)
+/teach:teach   → Start learning — from here on, just talk naturally
 ```
 
-That's it. Two commands. Zero configuration.
+### With ZCode: import the commands (once)
 
----
+ZCode does not read `.claude/` automatically. Import the commands once, either way:
 
-## How It Teaches
+- Use ZCode's import feature to import the commands under `.claude/commands/teach/`
+- Or copy manually: copy `.claude/commands/teach/` to your project's `.zcode/commands/teach/` (ZCode natively scans `.zcode/commands/`; nested directories become `/teach:xxx` commands, same naming as Claude Code)
 
-### Conversational, Not Mechanical
+Then type `/teach:init` to start. The teaching files themselves (`.claude/skills/teacher/`) are plain markdown — the AI reads them on its own while executing the command, nothing extra to set up.
 
-```
-You:      /teach:teach
-Mentor:   Last time we got to the native bridge in init(), I was about to explain fetchUserInfo(). Continue?
-You:      Does this function return a string instead of a number?
-Mentor:   Great question! This is actually a common gotcha...
-```
+## Your first ten minutes
 
-Three-dimensional explanation: **What** it does, **Why** it's designed that way, **Pitfalls** to watch out for.
-
-### Expand Only What You Need
+The first `/teach:init` is a friendly assessment — the mentor chats with you for a moment:
 
 ```
-L0  Project root       ← Auto-scanned on init
-L1  Directory listing   ← You say "look at the vue directory"
-L2  File listing        ← You say "expand components"
-L3  Function signatures ← You say "what functions are in this file"
+Mentor:   Hi! I'm here to help you get familiar with this codebase.
+          First, tell me about your background — what languages
+          and frameworks do you mostly work with?
+You:      Mostly Vue, a little React
+Mentor:   Used module bundlers like Webpack?
+You:      Yes, Webpack
+...
+Mentor:   Got it. Vue background, here to maintain this project —
+          I'll scan the project structure, sketch you an architecture
+          picture, and we'll start from the entry point.
 ```
 
-A project with 1,000 files but you only learn 50? Tokens spent only on those 50.
+Then `/teach:teach` — just talk:
 
-### 5-Level Coverage Tracking
+```
+You:      How are the pages in this project organized?
+Mentor:   Let's follow one real page load.
+          When you open the home page, the first thing that runs is
+          init() in index.js — it does three things: registers modules,
+          creates the app instance, and fetches user info.
+          Note the third one: fetching user info is async, but the page
+          renders without waiting for it — that's why the first screen
+          sometimes flashes default values.
+          This function is 500+ lines; let's cover these thirty today
+          and continue next time?
+```
+
+## Learn as deep as you go — tokens scale with what you learn
+
+A project with 1,000 files but you only learn 50? Tokens are spent only on those 50. Say "look at the vue directory" and it expands just that level; say "what functions are in this file" and it lists just those. Nothing you don't learn ever gets scanned.
+
+Progress is saved in the project's `.study-code/` directory, precise down to "where we stopped inside a function". Close the session and resume tomorrow. Learn with Claude Code today, switch to ZCode tomorrow — the state lives in your project, not in the tool.
+
+Two ways to learn, depending on why you're here:
+
+> **"I need to change the payment feature"** → traces the full call chain from the entry point, fast way to locate what you'll modify
+>
+> **"I just inherited this project"** → systematic tour from the entry point, expanding by dependencies
+
+## How deep you've learned, on a scale
 
 | Level | Meaning | How to reach it |
 |-------|---------|-----------------|
@@ -93,66 +107,23 @@ A project with 1,000 files but you only learn 50? Tokens spent only on those 50.
 | 3 | Can locate | Found the code in exercises |
 | 4 | Can modify | Passed a practical simulation |
 
-From "knows it exists" to "can independently change the code" — every step is tracked.
+"Feels understood" doesn't count — answering questions correctly earns "can explain", locating code in exercises earns "can locate", passing a cross-module simulation earns "can modify". Once you reach "can modify", you're ready for real tasks.
 
-### Resume Across Sessions
-
-Close the conversation, come back tomorrow? Exact resume point saved — down to the specific function and line. Next `/teach:teach` picks right up.
-
----
-
-## Features
-
-- **Progressive scanning** — Expand only what you want to learn, keep token costs controlled
-- **DAG learning roadmap** — Guided by code dependency relationships
-- **5-level coverage tracking** — Quantifiable learning progress
-- **Cross-session resume** — Precise to the function level
-- **Adaptive guidance** — Detailed for beginners, concise for veterans
-- **Active questioning** — Tests understanding after each concept
-- **Drift detection** — Brings you back on topic when you go off-track
-- **Practical simulations** — Real-world scenarios once you've learned enough
-
-## Learning Modes
-
-**Mode A — Feature Story (Goal-driven)**
-> "I need to change the payment feature" → Traces the full call chain from entry point
-
-Best for: You have a specific task and need to quickly understand the relevant code.
-
-**Mode B — Layered Progression (Systematic)**
-> Start from entry points, expand by dependency relationships
-
-Best for: You're taking over a new project and want complete understanding.
-
-Switch modes anytime — just say it in the conversation.
-
-## How It Works
-
-`study-code init` scaffolds teaching skills into your project's `.claude/` directory:
+## How it works (optional reading)
 
 ```
 .claude/
-├── commands/teach/       ← Slash commands (/teach:teach, /teach:init, /teach:help)
-└── skills/teacher/       ← Teaching engine (orchestrator, behaviors, schemas)
+├── commands/teach/    ← Three commands: /teach:init, /teach:teach, /teach:help
+└── skills/teacher/    ← Teaching logic: orchestrator + 8 behavior specs + state schemas
 ```
 
-Learning state is saved in `.study-code/` at your project root:
+Commands are thin entry points that delegate to `skills/teacher/orchestrator.md`: each turn it reads state → decides the next step → understands your natural language → routes to a behavior (expand / explain / trace / quiz / practice / simulate / gap-check / drift) → writes state back. Expansion is on-demand across four levels (L0 root → L1 directories → L2 files → L3 function signatures). All the intelligence lives in markdown prompts — the npm package itself has zero AI logic; it's pure file copying.
 
-```
-.study-code/
-├── config.yaml           ← Learner profile & guidance settings
-├── progress.yaml         ← Current cursor position & session stats
-├── roadmap.yaml          ← Learning DAG (nodes, dependencies, status)
-├── coverage.yaml         ← Function-level 5-tier coverage tracking
-├── tree-state.yaml       ← Tree expansion state
-├── snapshot.md           ← Session snapshot (precise resume point)
-├── mental-model.md       ← Architecture mental model
-└── drift-log.yaml        ← Off-topic records
-```
+Learning state (8 files) lives in `.study-code/` at the project root: learner profile, progress cursor, learning roadmap, coverage, session snapshot, mental model, and more.
 
 ## Requirements
 
-- [Claude Code](https://docs.anthropic.com/en/docs/claude-code) CLI
+- Claude Code (auto-detected) or ZCode (import commands)
 - Node.js >= 16
 
 ## License
