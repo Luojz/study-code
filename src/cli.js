@@ -10,7 +10,7 @@ const program = new Command();
 program
   .name('study-code')
   .description('AI-powered code teaching system scaffolder for Claude Code')
-  .version('0.1.2');
+  .version('0.1.3');
 
 program
   .command('init')
