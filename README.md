@@ -8,7 +8,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Node](https://img.shields.io/node/v/study-code.svg)](https://nodejs.org)
 
-[中文文档](https://github.com/luojz/study-code/blob/master/docs/README.zh-CN.md)
+[中文文档](https://github.com/luojz/study-code/blob/master/docs/README.zh-CN.md) · [GitHub Repo](https://github.com/luojz/study-code)
 
 ---
 
@@ -125,6 +125,10 @@ Learning state (8 files) lives in `.study-code/` at the project root: learner pr
 
 - Claude Code (auto-detected) or ZCode (import commands)
 - Node.js >= 16
+
+## Author
+
+**Luojz** — [GitHub](https://github.com/luojz)
 
 ## License
 

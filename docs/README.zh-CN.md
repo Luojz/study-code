@@ -8,7 +8,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Node](https://img.shields.io/node/v/study-code.svg)](https://nodejs.org)
 
-[English](https://github.com/luojz/study-code/blob/master/README.md)
+[English](https://github.com/luojz/study-code/blob/master/README.md) · [GitHub 仓库](https://github.com/luojz/study-code)
 
 ---
 
@@ -120,6 +120,10 @@ ZCode 不自动读取 `.claude/` 目录，把命令导入一次即可，两种�
 
 - Claude Code（自动识别）或 ZCode（导入命令）
 - Node.js ≥ 16
+
+## 作者
+
+**Luojz** — [GitHub 主页](https://github.com/luojz)
 
 ## License
 

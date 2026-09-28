@@ -20,7 +20,18 @@
     "skills",
     "scaffolder"
   ],
-  "author": "ljz",
+  "author": {
+    "name": "Luojz",
+    "url": "https://github.com/luojz"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luojz/study-code.git"
+  },
+  "homepage": "https://github.com/luojz/study-code#readme",
+  "bugs": {
+    "url": "https://github.com/luojz/study-code/issues"
+  },
   "license": "MIT",
   "engines": {
     "node": ">=16.0.0"
